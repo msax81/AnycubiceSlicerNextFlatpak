@@ -1,0 +1,82 @@
+# Note:
+# This is the flatpak-builder yaml manifest for packing the AnycubicSlicerNext 
+# build for Ubuntu 20.04 to be usable on other distributions. The only 
+# distribution on which it's being tested is Arch with the latest updates at 
+# the time of manifest release. This is loosely based on a Orca's manifest.
+# 
+# Any pull request will probably be completely ignored. Copy it, fork it, do 
+# whatever you like. If it doesn't work for some reason, there is a page
+# dedicated for that: https://docs.flatpak.org/en/latest/introduction.html
+#
+# Anycubic released the GNU/Linux version of their fork of Orca slicer for
+# Ubuntu 20.04 amd64, published on their repo. The repo Release fie is 
+# available at
+# https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/Packages
+# 
+# Usage example:
+# - buld
+#   flatpak-builder --force-clean --user --install-deps-from=flathub --repo=repo --keep-build-dirs  build-dir com.anycubic.slicernext.yaml
+# - test run
+#   flatpak-builder --run build-dir com.anycubic.slicernext.yaml AnycubicSlicerNext
+# - bundle build
+#   flatpak build-bundle repo AnycubicSlicerNext.flatpak com.anycubic.SlicerNext
+# - bundle install
+#   flatpak install AnycubicSlicerNext.flatpak  
+# 
+# Details:
+# - Manifest Version: 1.0
+# - Slicer Version: 1.3.629
+# - Slicer Architecture: amd64
+# - Slicer Download link: https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/AnycubicSlicerNext-1.3.629_20250716_135327-Ubuntu_24_04_2_LTS.deb
+#   
+# Known issues:
+# - Camera slow refresh rate, around 0.5 fps
+# - icon needs a fix
+#
+
+app-id: com.anycubic.SlicerNext
+runtime: org.gnome.Platform
+runtime-version: '47'
+sdk: org.gnome.Sdk
+command: AnycubicSlicerNext
+finish-args:
+   - --share=ipc
+   - --socket=x11
+   - --share=network
+   - --device=all
+   - --filesystem=home
+   - --filesystem=xdg-run/gvfs
+   - --filesystem=/run/media
+   - --filesystem=/media
+   - --filesystem=/run/spnav.sock:ro
+   - --talk-name=io.github.softfever.OrcaSlicer.InstanceCheck.*
+   - --system-talk-name=org.freedesktop.UDisks2
+   - --env=SPNAV_SOCKET=/run/spnav.sock
+
+modules:
+  - name: slicernext-deb
+    buildsystem: simple
+    build-commands:
+      - ar x AnycubicSlicerNext-1.3.629_20250716_135327-Ubuntu_24_04_2_LTS.deb
+      - tar -xzf data.tar.gz
+      - |
+        if [ -f usr/bin/AnycubicSlicerNext ]; then
+          install -Dm755 usr/bin/AnycubicSlicerNext /app/bin/AnycubicSlicerNext
+        fi
+      - |
+        if [ -f usr/share/applications/AnycubicSlicer.desktop ]; then
+          install -D usr/share/applications/AnycubicSlicer.desktop /app/share/applications/com.anycubic.SlicerNext.desktop
+          sed -i 's/^Icon=.*/Icon=com.anycubic.SlicerNext/' /app/share/applications/com.anycubic.SlicerNext.desktop
+        fi
+      - |
+        if [ -f usr/share/AnycubicSlicerNext/resources/images/AnycubicSlicer.png ]; then
+          install -Dm644 usr/share/AnycubicSlicerNext/resources/images/AnycubicSlicer.png /app/share/icons/hicolor/154x154/apps/com.anycubic.SlicerNext.png
+        fi
+      - |
+        cp -a usr/lib /app/
+        cp -a usr/share/AnycubicSlicerNext/resources /app/
+    sources:
+      - type: file
+        url: https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/AnycubicSlicerNext-1.3.629_20250716_135327-Ubuntu_24_04_2_LTS.deb
+        sha256: 396f52f270fb45c24aae1b14407fd1f2bdf8beadfafcbfb9c0b4d89fb2155818
+
