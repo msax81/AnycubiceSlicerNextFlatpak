@@ -31,6 +31,7 @@
 #   
 # Known issues:
 # - Camera slow refresh rate, around 0.5 fps
+# - camera not supported by the slicer when in cloud mode
 # - icon needs a fix
 #
 
