@@ -14,12 +14,12 @@ available at
 https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/Packages
 
 Usage example:
-- buld
+- buld:
   flatpak-builder --force-clean --user --install-deps-from=flathub --repo=repo --keep-build-dirs  build-dir com.anycubic.slicernext.yaml
-- test run
+- test run:
   flatpak-builder --run build-dir com.anycubic.slicernext.yaml AnycubicSlicerNext
-- bundle build
+- bundle build:
   flatpak build-bundle repo AnycubicSlicerNext.flatpak com.anycubic.SlicerNext
-- bundle install
+- bundle install:
   flatpak install AnycubicSlicerNext.flatpak  
 
