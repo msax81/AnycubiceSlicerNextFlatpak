@@ -24,15 +24,19 @@
 #   flatpak install AnycubicSlicerNext.flatpak  
 # 
 # Details:
-# - Manifest Version: 1.0
-# - Slicer Version: 1.3.629
+# - Manifest Version: 2.0
+# - Slicer Version: 1.3.7156
 # - Slicer Architecture: amd64
-# - Slicer Download link: https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/AnycubicSlicerNext-1.3.629_20250716_135327-Ubuntu_24_04_2_LTS.deb
+# - Slicer Download link: https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/AnycubicSlicerNext-1.3.7156_20250918_192029-Ubuntu_24_04_2_LTS.deb
 #   
 # Known issues:
 # - Camera slow refresh rate, around 0.5 fps
-# - camera not supported by the slicer when in cloud mode
-# - icon needs a fix
+# - Camera works only in LAN mode, Cloud mode camera still unsupported
+# - Flatpak icon neFds a fix
+#
+# Notes:
+# - Tested on Kobra S1, fw v2.5.6.4 with rinkhals
+# - Updated the OrcaSlicer baseline version to the v2.3, according to the anycubic's version release notes
 #
 
 app-id: com.anycubic.SlicerNext
@@ -58,7 +62,7 @@ modules:
   - name: slicernext-deb
     buildsystem: simple
     build-commands:
-      - ar x AnycubicSlicerNext-1.3.629_20250716_135327-Ubuntu_24_04_2_LTS.deb
+      - ar x AnycubicSlicerNext-1.3.7156_20250918_192029-Ubuntu_24_04_2_LTS.deb
       - tar -xzf data.tar.gz
       - |
         if [ -f usr/bin/AnycubicSlicerNext ]; then
@@ -78,6 +82,6 @@ modules:
         cp -a usr/share/AnycubicSlicerNext/resources /app/
     sources:
       - type: file
-        url: https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/AnycubicSlicerNext-1.3.629_20250716_135327-Ubuntu_24_04_2_LTS.deb
-        sha256: 396f52f270fb45c24aae1b14407fd1f2bdf8beadfafcbfb9c0b4d89fb2155818
+        url: https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/AnycubicSlicerNext-1.3.7156_20250918_192029-Ubuntu_24_04_2_LTS.deb
+        sha256: 2ca3da24d76c60d0e7a8222646ff23fdb868394dbe0ff111202a5d2959a0b851
 
