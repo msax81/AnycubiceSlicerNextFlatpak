@@ -9,7 +9,7 @@
 # dedicated for that: https://docs.flatpak.org/en/latest/introduction.html
 #
 # Anycubic released the GNU/Linux version of their fork of Orca slicer for
-# Ubuntu 20.04 amd64, published on their repo. The repo Release fie is 
+# Ubuntu 24.04 amd64, published on their repo. The repo Release file is 
 # available at
 # https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/Packages
 # 
@@ -24,15 +24,15 @@
 #   flatpak install AnycubicSlicerNext.flatpak  
 # 
 # Details:
-# - Manifest Version: 2.0
-# - Slicer Version: 1.3.7156
+# - Manifest Version: 2.1
+# - Slicer Version: 1.3.7171
 # - Slicer Architecture: amd64
-# - Slicer Download link: https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/AnycubicSlicerNext-1.3.7156_20250918_192029-Ubuntu_24_04_2_LTS.deb
+# - Slicer Download link: https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/AnycubicSlicerNext-1.3.7171_20250928_162543-Ubuntu_24_04_2_LTS.deb
 #   
 # Known issues:
 # - Camera slow refresh rate, around 0.5 fps
 # - Camera works only in LAN mode, Cloud mode camera still unsupported
-# - Flatpak icon neFds a fix
+# - Flatpak icon needs a fix
 #
 # Notes:
 # - Tested on Kobra S1, fw v2.5.6.4 with rinkhals
@@ -62,7 +62,7 @@ modules:
   - name: slicernext-deb
     buildsystem: simple
     build-commands:
-      - ar x AnycubicSlicerNext-1.3.7156_20250918_192029-Ubuntu_24_04_2_LTS.deb
+      - ar x AnycubicSlicerNext-1.3.7171_20250928_162543-Ubuntu_24_04_2_LTS.deb
       - tar -xzf data.tar.gz
       - |
         if [ -f usr/bin/AnycubicSlicerNext ]; then
@@ -82,6 +82,6 @@ modules:
         cp -a usr/share/AnycubicSlicerNext/resources /app/
     sources:
       - type: file
-        url: https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/AnycubicSlicerNext-1.3.7156_20250918_192029-Ubuntu_24_04_2_LTS.deb
-        sha256: 2ca3da24d76c60d0e7a8222646ff23fdb868394dbe0ff111202a5d2959a0b851
+        url: https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/AnycubicSlicerNext-1.3.7171_20250928_162543-Ubuntu_24_04_2_LTS.deb
+        sha256: a01fe863cc4efe8f943974782bfcb2d1d008ae3077ced065f63db893d71e1f92
 
