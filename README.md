@@ -23,3 +23,16 @@ Usage example:
 - bundle install:
   flatpak install AnycubicSlicerNext.flatpak  
 
+Notes:
+- for v1.3.7171 gnome platform runtime version v46, slicer won't run when installed as bundle (but will work just fine in test run) and reports
+```  
+[0x000074461b5a1480] [trace]   Initializing StaticPrintConfigs
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  locale::facet::_S_create_c_locale name not valid
+```
+bumped gnome platform back to the v47, where installed bundel works as planned.
+- uniinstall could be needed by executing the 
+```
+flatpak uninstall com.anycubic.SlicerNext
+```
+that just removes the binary, setting should be preserved after installing corrected bundle
