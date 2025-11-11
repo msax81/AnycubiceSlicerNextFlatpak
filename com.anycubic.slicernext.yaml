@@ -41,7 +41,7 @@
 
 app-id: com.anycubic.SlicerNext
 runtime: org.gnome.Platform
-runtime-version: '47'
+runtime-version: '46'
 sdk: org.gnome.Sdk
 command: AnycubicSlicerNext
 finish-args:
