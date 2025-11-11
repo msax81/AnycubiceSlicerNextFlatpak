@@ -1,6 +1,6 @@
 Note:
 This is the flatpak-builder yaml manifest for packing the AnycubicSlicerNext 
-build for Ubuntu 20.04 to be usable on other distributions. The only 
+build for Ubuntu 24.04 to be usable on other distributions. The only 
 distribution on which it's being tested is Arch with the latest updates at 
 the time of manifest release. This is loosely based on a Orca's manifest.
 
@@ -9,7 +9,7 @@ whatever you like. If it doesn't work for some reason, there is a page
 dedicated for that: https://docs.flatpak.org/en/latest/introduction.html
 
 Anycubic released the GNU/Linux version of their fork of Orca slicer for
-Ubuntu 20.04 amd64, published on their repo. The repo Release fie is 
+Ubuntu 24.04 amd64, published on their repo. The repo Release file is 
 available at
 https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/Packages
 
