@@ -30,7 +30,7 @@
 # - Slicer Download link: https://cdn-universe-slicer.anycubic.com/prod/dists/noble/main/binary-amd64/AnycubicSlicerNext-1.3.7171_20250928_162543-Ubuntu_24_04_2_LTS.deb
 #   
 # Known issues:
-# - Camera slow refresh rate, around 0.5 fps
+# - Camera refresh rate relatively normal, bu choppy
 # - Camera works only in LAN mode, Cloud mode camera still unsupported
 # - Flatpak icon needs a fix
 #
@@ -57,6 +57,7 @@ finish-args:
    - --talk-name=io.github.softfever.OrcaSlicer.InstanceCheck.*
    - --system-talk-name=org.freedesktop.UDisks2
    - --env=SPNAV_SOCKET=/run/spnav.sock
+   - --env=WEBKIT_DISABLE_COMPOSITING_MODE=1
 
 modules:
   - name: slicernext-deb
