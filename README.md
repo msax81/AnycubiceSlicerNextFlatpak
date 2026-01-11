@@ -24,6 +24,7 @@ Usage example:
   flatpak install AnycubicSlicerNext.flatpak  
 
 Notes:
+- with v1.3.995 (aka 1.3.9.1) gnome platform bumped to v48
 - for v1.3.7171 gnome platform runtime version v46, slicer won't run when installed as bundle (but will work just fine in test run) and reports
 ```  
 [0x000074461b5a1480] [trace]   Initializing StaticPrintConfigs
