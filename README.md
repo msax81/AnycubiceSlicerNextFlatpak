@@ -1,3 +1,7 @@
+Warning:
+Due to the recent decision to remove the dependency on any US-based or US-owned services, 
+this repository may disappear without notice.
+
 Note:
 This is the flatpak-builder yaml manifest for packing the AnycubicSlicerNext 
 build for Ubuntu 24.04 to be usable on other distributions. The only 
