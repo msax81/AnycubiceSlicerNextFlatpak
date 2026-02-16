@@ -28,6 +28,7 @@ Usage example:
   flatpak install AnycubicSlicerNext.flatpak  
 
 Notes:
+- v1.3.96 currently untested on printing, application only started to check will it crash
 - with v1.3.995 (aka 1.3.9.1) gnome platform bumped to v48
 - for v1.3.7171 gnome platform runtime version v46, slicer won't run when installed as bundle (but will work just fine in test run) and reports
 ```  
